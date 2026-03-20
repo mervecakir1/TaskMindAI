@@ -3,9 +3,9 @@ from fastapi import APIRouter, Depends, HTTPException, Path, Request
 from pydantic import BaseModel, Field
 from sqlalchemy.orm import Session
 from starlette import status
-from models import ToDo
-from database import SessionLocal
-from routers.auth import get_current_user
+from ..models import ToDo
+from ..database import SessionLocal
+from ..routers.auth import get_current_user
 from fastapi.templating import Jinja2Templates
 from starlette.responses import RedirectResponse
 from dotenv import load_dotenv
@@ -17,7 +17,7 @@ from langchain_core.messages import HumanMessage
 import markdown
 from bs4 import BeautifulSoup
 
-templates = Jinja2Templates(directory="templates")
+templates = Jinja2Templates(directory="app/templates")
 
 load_dotenv(dotenv_path=FilePath(__file__).parent.parent / ".env")
 

@@ -1,14 +1,13 @@
 from fastapi import APIRouter, Depends, HTTPException, Request
-from jose.constants import ALGORITHMS
 from pydantic import BaseModel
 from passlib.context import CryptContext
 from typing import Annotated
 from sqlalchemy.orm import Session
 from starlette import status
 from fastapi.security import  OAuth2PasswordRequestForm,OAuth2PasswordBearer
-from database import SessionLocal
-from models import User
-from jose import jwt, JWSError, JWTError
+from ..database import SessionLocal
+from ..models import User
+from jose import jwt, JWTError
 from datetime import timedelta,datetime,timezone
 from fastapi.templating import Jinja2Templates
 
@@ -17,7 +16,7 @@ router =APIRouter(
     tags=["Authentication"],
 )
 
-templates=Jinja2Templates(directory="templates")
+templates=Jinja2Templates(directory="app/templates")
 
 SECRET_KEY = "vi3veam2s26t98ontklf0t9cqtejh49b"
 ALGORITHM = "HS256"
